@@ -1,0 +1,97 @@
+@import "/public/node_modules/normalize.css/normalize.css";
+@import "variables";
+@import "mixin";
+
+//@font-face {
+//  font-family: "Open Sans Semibold";
+//  src: url(../../build/fonts/OpenSans-Semibold.ttf);
+//}
+//
+//@font-face {
+//  font-family: "Roboto Regular";
+//  src: url(../../build/fonts/Roboto-Regular.ttf);
+//}
+//
+//@font-face {
+//  font-family: "Roboto Light";
+//  src: url(../../build/fonts/Roboto-Light.ttf);
+//}
+
+body {
+  background-image: url('/public/img/bg.png');
+  font-family: 'Fira Sans', sans-serif;
+  height: 100%;
+}
+
+a {
+  color: $link-color;
+}
+
+.main-container {
+  border: 10px solid rgba(0,0,0,.1);
+}
+
+.article-section {
+  background-color: $article-section-bg;
+  border-right: 1px solid $separator-border-color;
+}
+
+.aside-section {
+  //background-color: $aside-section-bd;
+  background-image: url('/public/img/aside-bg.png');
+}
+
+.greeting-container {
+  padding: 45px 35px;
+  .greeting {
+    font-size: 25px;
+    color: $text-primary-color;
+  }
+}
+
+.separator-double {
+  border-top: 1px solid $separator-border-color;
+  border-bottom: 1px solid $separator-border-color;
+  height: 2px;
+  margin: 0 35px;
+}
+
+.separator {
+  border-top: 1px solid #ddddd7;
+}
+
+.entry-container {
+  padding: 45px 35px;
+  .entry-title {
+    font-size: 25px;
+    color: $text-primary-color;
+  }
+  .entry-description {
+    font-size: 13px;
+    color: $text-content-color
+  }
+}
+
+// Flex-box + bootstrap magic
+.row-flex-wrap {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  flex: 0;
+
+  & > div[class*='col-'] {
+    flex: 1 1 auto;
+  }
+}
+
+
+
+
+
+//.wrapper {
+//  margin: 0 auto;
+//  @include desktop {
+//    width: 1200px;
+//  }
+//}
+
