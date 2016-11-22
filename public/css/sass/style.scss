@@ -2,7 +2,8 @@
 @import "variables";
 @import "mixin";
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans');
 
 //@font-face {
 //  font-family: "Open Sans Semibold";
@@ -20,21 +21,107 @@
 //}
 
 body {
-  background-image: url('./../img/bg.png');
-  font-family: 'Roboto', sans-serif;
-  //font-family: 'Fira Sans', sans-serif;
-  height: 100%;
+  //font-family: 'Open Sans', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  background-color: $color-primary-light;
+  //min-height: 100vh;
 }
 
 a, a:hover, a:visited, a:link, a:active {
   text-decoration: none;
 }
 
+.wrapper {
+  margin: 0 auto;
+  @include desktop {
+    width: 1200px;
+  }
+}
 
-//.wrapper {
-//  margin: 0 auto;
-//  @include desktop {
-//    width: 1200px;
-//  }
-//}
 
+//
+// Header section
+//
+
+header {
+  //height: $header-height;
+  margin-bottom: $header-height - $header-content-height;
+}
+
+.header-logo {
+  display: inline-block;
+  //remove additional height
+  vertical-align: top;
+  width: 215px;
+  height: 97px;
+  margin: 0;
+  padding: 0;
+  background-image: url('./../img/logo.png');
+}
+
+.header-nav {
+  line-height: $header-content-height;
+  float: right;
+  margin-right: $col-main-margin-right;
+  .link {
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    line-height: 22px;
+    color: $color-primary-text;
+    margin-right: 35px;
+    transition: $transition-link-time;
+    cursor: pointer;
+    &:last-child {
+      margin-right: 0;
+    }
+    &.active {
+      color: $color-primary-dark;
+    }
+    &:hover {
+      color: $color-primary-active;
+    }
+  }
+}
+
+.search-bar {
+  line-height: $header-content-height;
+  text-align: right;
+  .search-btn {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 45px;
+    border-radius: 3px;
+    background: $color-primary-dark url('./../img/search-icon.png') no-repeat center;
+    cursor: pointer;
+    transition: $transition-link-time;
+    &:hover {
+      background-color: $color-primary-active;
+    }
+  }
+}
+
+//
+// Post list section
+//
+
+
+.post-poster {
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  img {
+    width: 100%;
+  }
+  .post-category {
+    position: absolute;
+    top: 25px;
+    right: -15px;
+    display: inline-block;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 300;
+    background-color: $color-primary-dark;
+    color: $color-primary-light;
+  }
+}
