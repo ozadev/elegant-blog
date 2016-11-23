@@ -8,16 +8,25 @@
     <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body data-ng-controller="mainCtrl">
-<div class="wrapper">
-    <header>
+
+<header>
+    <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-8">
                     <div class="header-logo"></div>
                     <nav class="header-nav">
-                        <span class="link active">Home</span>
-                        <span class="link">About</span>
-                        <span class="link">Forum</span>
+                        <ul>
+                            <li>
+                                <span class="link active">Home</span>
+                            </li>
+                            <li>
+                                <span class="link">About</span>
+                            </li>
+                            <li>
+                                <span class="link">Forum</span>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
                 <div class="col-sm-4">
@@ -27,8 +36,10 @@
                 </div>
             </div>
         </div>
-    </header>
-    <main>
+    </div>
+</header>
+<main>
+    <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-8">
@@ -37,22 +48,98 @@
                              data-ng-repeat="post in postsList">
                             <div class="post-poster">
                                 <img data-ng-src="{{post.posterSrc}}">
-                                <div class="post-category">{{categories[post.category]}}</div>
+                                <span class="post-category">{{categories[post.category]}}</span>
+                                <div class="post-tags-list">
+                                    <span class="tag-item"
+                                          data-ng-repeat="tag in post.tags">{{tags[tag]}}</span>
+                                </div>
                             </div>
+                            <div class="post-description">
+                                <h3 class="post-title">{{post.title}}</h3>
+                                <p>{{post.preview}}</p>
+                                <div class="post-info-bar">
+                                    <span class="post-date">{{post.date}}</span>
+                                    <span class="post-author">{{post.author}}</span>
+                                    <span class="post-comments">{{post.commentsNum}} Comments</span>
+                                    <a class="post-read-more" href="">Read more...</a>
+                                </div>
+                            </div>
+                            <div class="post-separator"
+                                 data-ng-hide="$last"></div>
                         </div>
+                        <div class="pagination" style="height: 60px"></div>
                     </div>
                 </div>
                 <div class="col-sm-4">
-
+                    <aside class="sidebar">
+                        <div class="sidebar-block">
+                            <div class="wide-btn">Suggest own article</div>
+                        </div>
+                        <div class="sidebar-block">
+                            <h3 class="title-line">
+                                <span class="title">Categories</span>
+                            </h3>
+                            <nav class="categories-nav">
+                                <ul>
+                                    <li data-ng-repeat="category in categories">
+                                        <a class="link" href="">{{category}}</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="sidebar-block">
+                            <h3 class="title-line">
+                                <span class="title">Popular tags</span>
+                            </h3>
+                            <div>
+                                <a class="tag-item"
+                                   href=""
+                                   data-ng-repeat="tag in tags">{{tag}}</a>
+                            </div>
+                        </div>
+                        <div class="sidebar-block">
+                            <h3 class="title-line">
+                                <span class="title">Popular posts</span>
+                            </h3>
+                            <div class="popular-posts">
+                                <a class="link"
+                                   href=""
+                                   data-ng-repeat="post in popularPostsList">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="row">
+                                                    <img data-ng-src="{{post.posterSrc}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="row">
+                                                    <h3 class="post-title">{{post.title}}</h3>
+                                                    <span class="post-date">{{post.date}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sidebar-block">
+                            <div class="wide-btn">Subscribe</div>
+                        </div>
+                    </aside>
                 </div>
             </div>
 
         </div>
-    </main>
-    <footer>
-
-    </footer>
-</div>
+    </div>
+</main>
+<footer>
+    <div class="wrapper">
+        <div class="footer-content">
+            <span class="logo"></span>
+        </div>
+    </div>
+</footer>
 
 
 <script src="./node_modules/angular/angular.min.js"></script>
