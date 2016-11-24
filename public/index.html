@@ -18,13 +18,13 @@
                     <nav class="header-nav">
                         <ul>
                             <li>
-                                <span class="link active">Home</span>
+                                <a href="" class="link active">Home</a>
                             </li>
                             <li>
-                                <span class="link">About</span>
+                                <a href="" class="link">About</a>
                             </li>
                             <li>
-                                <span class="link">Forum</span>
+                                <a href="" class="link">Forum</a>
                             </li>
                         </ul>
                     </nav>
@@ -43,32 +43,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-8">
-                    <div class="post-list">
-                        <div class="post"
-                             data-ng-repeat="post in postsList">
-                            <div class="post-poster">
-                                <img data-ng-src="{{post.posterSrc}}">
-                                <span class="post-category">{{categories[post.category]}}</span>
-                                <div class="post-tags-list">
-                                    <span class="tag-item"
-                                          data-ng-repeat="tag in post.tags">{{tags[tag]}}</span>
-                                </div>
-                            </div>
-                            <div class="post-description">
-                                <h3 class="post-title">{{post.title}}</h3>
-                                <p>{{post.preview}}</p>
-                                <div class="post-info-bar">
-                                    <span class="post-date">{{post.date}}</span>
-                                    <span class="post-author">{{post.author}}</span>
-                                    <span class="post-comments">{{post.commentsNum}} Comments</span>
-                                    <a class="post-read-more" href="">Read more...</a>
-                                </div>
-                            </div>
-                            <div class="post-separator"
-                                 data-ng-hide="$last"></div>
-                        </div>
-                        <div class="pagination" style="height: 60px"></div>
-                    </div>
+                    <ng-view></ng-view>
                 </div>
                 <div class="col-sm-4">
                     <aside class="sidebar">
@@ -137,6 +112,21 @@
     <div class="wrapper">
         <div class="footer-content">
             <span class="logo"></span>
+            <nav class="footer-nav">
+                <ul>
+                    <li>
+                        <a href="" class="link">Home</a>
+                    </li>
+                    <li>
+                        <a href="" class="link">About</a>
+                    </li>
+                    <li>
+                        <a href="" class="link">Forum</a>
+                    </li>
+                </ul>
+            </nav>
+            <span class="copyright">© 2016 - qwes.org. All Rights Reserved. Designed & Developed by
+                <a href="" class="developer-link">ozadev</a></span>
         </div>
     </div>
 </footer>
@@ -152,9 +142,13 @@
 <!--<script src="/js/node_modules/angular-clipboard/angular-clipboard.js"></script>-->
 <!--<script src="/js/node_modules/ng-dialog/js/ngDialog.min.js"></script>-->
 
+<!--<script src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>-->
+<script src="./node_modules/angular-route/angular-route.min.js"></script>
+
 <script src="./js/app.module.js"></script>
 <script src="./js/app.config.js"></script>
 <script src="./js/controllers/app.controller.js"></script>
+<script src="./js/controllers/postsList.controller.js"></script>
 <!--<script src="/js/build/js/directives/initFocus.directive.js"></script>-->
 <!--<script src="/js/build/js/directives/clickOutside.directive.js"></script>-->
 <!--<script src="/js/build/js/directives/elemNotification.directive.js"></script>-->

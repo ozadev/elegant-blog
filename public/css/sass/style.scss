@@ -81,7 +81,6 @@ header {
     //line-height: 22px;
     color: $color-primary-text;
     transition: $transition-link-time;
-    cursor: pointer;
     &.active {
       color: $color-primary-dark;
     }
@@ -327,12 +326,33 @@ footer {
 }
 
 .footer-content {
-  padding: 20px 0;
+  padding: 40px 0;
   text-align: center;
   .logo {
     display: inline-block;
     width: 144px;
     height: 46px;
     background-image: url('./../img/footer-logo.png');
+  }
+}
+
+.footer-nav {
+  @extend .header-nav;
+  float: none;
+  text-align: center;
+  line-height: 80px;
+  margin: 0;
+}
+
+.copyright {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: $color-primary-text;
+  .developer-link {
+    transition: $transition-link-time;
+    color: $color-primary-light;
+    &:hover {
+      color: $color-primary-active;
+    }
   }
 }
