@@ -7,75 +7,51 @@
 app.config(function ($routeProvider) {
 
     $routeProvider
-        .when('/:id?', {
+        .when('/', {
             templateUrl: 'views/postsList.html',
             controller: 'postsListCtrl',
             resolve: {
-                postsList: function($route) {
-                    console.log($route.current.params.id);
-                    var postsList = [
-                        {
-                            id: 0,
-                            title: 'Lorem ipsum dolor sit amet, his affert platonem intellegat at, blandit maluisset constituto his ne.',
-                            preview: 'Et nec consetetur efficiantur. No eum eros reque solet, ius ne expetenda repudiare. Ei his sale prompta suscipiantur, dicunt ancillae copiosae ei mel, nec dicam ridens dolores at. Et his vide inciderint, pri cu convenire molestiae. Ex alterum propriae complectitur mei. Ea vero tritani his, eros adhuc omnium ut per.',
-                            category: 0,
-                            tags: [0, 1],
-                            date: 'Oct 10, 2016',
-                            author: 'John Doe',
-                            commentsNum: 10,
-                            posterSrc: './content/0/poster.jpg'
-                        },
-                        {
-                            id: 1,
-                            title: 'Lorem ipsum dolor sit amet, his affert platonem intellegat at, blandit maluisset constituto his ne.',
-                            preview: 'Et nec consetetur efficiantur. No eum eros reque solet, ius ne expetenda repudiare. Ei his sale prompta suscipiantur, dicunt ancillae copiosae ei mel, nec dicam ridens dolores at. Et his vide inciderint, pri cu convenire molestiae. Ex alterum propriae complectitur mei. Ea vero tritani his, eros adhuc omnium ut per.',
-                            category: 4,
-                            tags: [3, 4],
-                            date: 'Sep 21, 2016',
-                            author: 'John Doe',
-                            commentsNum: 3,
-                            posterSrc: './content/1/poster.jpg'
-                        }
-                    ];
-
-                    if ($route.current.params.id === 'electronics') {
-                        postsList = [
-                            {
-                                id: 0,
-                                title: 'Lorem ipsum dolor sit amet, his affert platonem intellegat at, blandit maluisset constituto his ne.',
-                                preview: 'Et nec consetetur efficiantur. No eum eros reque solet, ius ne expetenda repudiare. Ei his sale prompta suscipiantur, dicunt ancillae copiosae ei mel, nec dicam ridens dolores at. Et his vide inciderint, pri cu convenire molestiae. Ex alterum propriae complectitur mei. Ea vero tritani his, eros adhuc omnium ut per.',
-                                category: 0,
-                                tags: [0, 1],
-                                date: 'Oct 10, 2016',
-                                author: 'John Doe',
-                                commentsNum: 10,
-                                posterSrc: './content/0/poster.jpg'
-                            }
-                        ];
-                    }
-
-                    if ($route.current.params.id === 'linux') {
-                        postsList = [
-                            {
-                                id: 1,
-                                title: 'Lorem ipsum dolor sit amet, his affert platonem intellegat at, blandit maluisset constituto his ne.',
-                                preview: 'Et nec consetetur efficiantur. No eum eros reque solet, ius ne expetenda repudiare. Ei his sale prompta suscipiantur, dicunt ancillae copiosae ei mel, nec dicam ridens dolores at. Et his vide inciderint, pri cu convenire molestiae. Ex alterum propriae complectitur mei. Ea vero tritani his, eros adhuc omnium ut per.',
-                                category: 4,
-                                tags: [3, 4],
-                                date: 'Sep 21, 2016',
-                                author: 'John Doe',
-                                commentsNum: 3,
-                                posterSrc: './content/1/poster.jpg'
-                            }
-                        ];
-                    }
-
-                    return postsList;
+                postsList: function(getPosts) {
+                    console.log('route /');
+                    return getPosts.getPostsAll();
+                    // console.log($route.current.params.id);
                 }
             }
         })
         .when('/category/:id', {
-            templateUrl: 'views/postsList.html'
+            templateUrl: 'views/postsList.html',
+            controller: 'postsListCtrl',
+            resolve: {
+                postsList: function($route, getPosts) {
+                    console.log('route /category/id');
+                    return getPosts.getPostsByCategory($route.current.params.id);
+                }
+            }
+        })
+        .when('/tag/:id', {
+            templateUrl: 'views/postsList.html',
+            controller: 'postsListCtrl',
+            resolve: {
+                postsList: function($route, getPosts) {
+                    console.log('route /tag/id');
+                    return getPosts.getPostsByTag($route.current.params.id);
+                }
+            }
+        })
+        .when('/post/:id', {
+            templateUrl: 'views/post.html',
+            controller: ['$scope', 'post', function($scope, post) {
+                $scope.post = post;
+            }],
+            resolve: {
+                post: function($route, getPosts) {
+                    console.log('route /post/id');
+                    return getPosts.getPostById($route.current.params.id);
+                }
+            }
+        })
+        .when('/about', {
+            templateUrl: 'views/about.html'
         })
         .otherwise({
             redirectTo: '/'

@@ -6,7 +6,8 @@ body {
   background-color: #F8F8FF; }
 
 a, a:hover, a:visited, a:link, a:active {
-  text-decoration: none; }
+  text-decoration: none;
+  color: inherit; }
 
 .wrapper {
   margin: 0 auto; }
@@ -97,7 +98,11 @@ p {
     background-color: #1e4e8a;
     color: #F8F8FF;
     -webkit-border-radius: 2px;
-    border-radius: 2px; }
+    border-radius: 2px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s; }
+    .post-poster .post-category:hover {
+      background-color: #1B98E0; }
   .post-poster .post-tags-list {
     position: absolute;
     left: 15px;
@@ -118,6 +123,8 @@ p {
   .tag-item:hover {
     background-color: #1B98E0;
     color: #F8F8FF; }
+  .tag-item:visited {
+    color: #F8F8FF; }
 
 .post-title {
   font-size: 26px;
@@ -126,7 +133,12 @@ p {
   margin: 15px 0 12px 0;
   -webkit-transition: 0.2s;
   transition: 0.2s; }
-  .post-title:hover {
+  .post-title a {
+    -webkit-transition: 0.2s;
+    transition: 0.2s; }
+  .post-title a:visited {
+    color: #202020; }
+  .post-title a:hover {
     color: #1B98E0; }
 
 .post-description {
@@ -151,6 +163,15 @@ p {
     transition: 0.2s; }
     .post-description .post-read-more:hover {
       color: #1B98E0; }
+
+.post-fully .post-title {
+  margin: 0 0 12px 0; }
+
+.post-fully .post-header {
+  margin-bottom: 15px; }
+
+.post-fully .post-content {
+  margin-top: 15px; }
 
 .sidebar .sidebar-block {
   margin-bottom: 30px; }

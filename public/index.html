@@ -18,13 +18,13 @@
                     <nav class="header-nav">
                         <ul>
                             <li>
-                                <a href="" class="link active">Home</a>
+                                <a href="#/" class="link active">Home</a>
                             </li>
                             <li>
-                                <a href="" class="link">About</a>
+                                <a href="#/about" class="link">About</a>
                             </li>
                             <li>
-                                <a href="" class="link">Forum</a>
+                                <a href="#/" class="link">Forum</a>
                             </li>
                         </ul>
                     </nav>
@@ -56,8 +56,8 @@
                             </h3>
                             <nav class="categories-nav">
                                 <ul>
-                                    <li data-ng-repeat="category in categories">
-                                        <a class="link" href="">{{category}}</a>
+                                    <li data-ng-repeat="(catKey, category) in categories">
+                                        <a class="link" href="#/category/{{catKey}}">{{category}}</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -68,8 +68,8 @@
                             </h3>
                             <div>
                                 <a class="tag-item"
-                                   href=""
-                                   data-ng-repeat="tag in tags">{{tag}}</a>
+                                   href="#/tag/{{tagKey}}"
+                                   data-ng-repeat="(tagKey, tag) in tags">{{tag}}</a>
                             </div>
                         </div>
                         <div class="sidebar-block">
@@ -78,7 +78,7 @@
                             </h3>
                             <div class="popular-posts">
                                 <a class="link"
-                                   href=""
+                                   href="#/post/{{post.id}}"
                                    data-ng-repeat="post in popularPostsList">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -115,13 +115,13 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="" class="link">Home</a>
+                        <a href="#/" class="link">Home</a>
                     </li>
                     <li>
-                        <a href="" class="link">About</a>
+                        <a href="#/about" class="link">About</a>
                     </li>
                     <li>
-                        <a href="" class="link">Forum</a>
+                        <a href="#/" class="link">Forum</a>
                     </li>
                 </ul>
             </nav>
@@ -147,6 +147,7 @@
 
 <script src="./js/app.module.js"></script>
 <script src="./js/app.config.js"></script>
+<script src="./js/services/getPosts.service.js"></script>
 <script src="./js/controllers/app.controller.js"></script>
 <script src="./js/controllers/postsList.controller.js"></script>
 <!--<script src="/js/build/js/directives/initFocus.directive.js"></script>-->

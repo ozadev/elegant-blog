@@ -1,22 +1,25 @@
 <div class="post-list">
     <div class="post"
          data-ng-repeat="post in postsList">
-        <div class="post-poster">
-            <img data-ng-src="{{post.posterSrc}}">
-            <span class="post-category">{{categories[post.category]}}</span>
-            <div class="post-tags-list">
-                <span class="tag-item"
-                      data-ng-repeat="tag in post.tags">{{tags[tag]}}</span>
+        <a href="#/post/{{post.id}}">
+            <div class="post-poster">
+                <img data-ng-src="{{post.posterSrc}}">
+                <a class="post-category" href="#/category/{{post.category}}">{{categories[post.category]}}</a>
+                <div class="post-tags-list">
+                    <a class="tag-item"
+                          href="#/tag/{{tagKey}}"
+                          data-ng-repeat="tagKey in post.tags">{{tags[tagKey]}}</a>
+                </div>
             </div>
-        </div>
+        </a>
         <div class="post-description">
-            <h3 class="post-title">{{post.title}}</h3>
+            <h3 class="post-title"><a href="#/post/{{post.id}}">{{post.title}}</a></h3>
             <p>{{post.preview}}</p>
             <div class="post-info-bar">
                 <span class="post-date">{{post.date}}</span>
                 <span class="post-author">{{post.author}}</span>
                 <span class="post-comments">{{post.commentsNum}} Comments</span>
-                <a class="post-read-more" href="">Read more...</a>
+                <a class="post-read-more" href="#/post/{{post.id}}">Read more...</a>
             </div>
         </div>
         <div class="post-separator"

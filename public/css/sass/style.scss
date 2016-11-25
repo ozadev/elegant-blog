@@ -28,6 +28,7 @@ body {
 
 a, a:hover, a:visited, a:link, a:active {
   text-decoration: none;
+  color: inherit;
 }
 
 .wrapper {
@@ -149,6 +150,10 @@ p {
     background-color: $color-primary-dark;
     color: $color-primary-light;
     border-radius: 2px;
+    transition: $transition-link-time;
+    &:hover {
+      background-color: $color-primary-active;
+    }
   }
   .post-tags-list {
     position: absolute;
@@ -171,6 +176,9 @@ p {
     background-color: $color-primary-active;
     color: $color-primary-light;
   }
+  &:visited {
+    color: $color-primary-light;
+  }
 }
 
 .post-title {
@@ -179,7 +187,13 @@ p {
   color: $color-post-text;
   margin: 15px 0 12px 0;
   transition: $transition-link-time;
-  &:hover {
+  a {
+    transition: $transition-link-time;
+  }
+  a:visited {
+    color: $color-post-text;
+  }
+  a:hover {
     color: $color-primary-active;
   }
 }
@@ -210,6 +224,18 @@ p {
     &:hover {
       color: $color-primary-active;
     }
+  }
+}
+
+.post-fully {
+  .post-title {
+    margin: 0 0 12px 0;
+  }
+  .post-header {
+    margin-bottom: 15px;
+  }
+  .post-content {
+    margin-top: 15px;
   }
 }
 

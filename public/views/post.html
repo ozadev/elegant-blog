@@ -1,0 +1,24 @@
+<div class="">
+    <div class="post post-fully">
+        <div class="post-description post-header">
+            <h3 class="post-title">{{post.title}}</h3>
+            <div class="post-info-bar">
+                <span class="post-date">{{post.date}}</span>
+                <span class="post-author">{{post.author}}</span>
+                <span class="post-comments">{{post.commentsNum}} Comments</span>
+            </div>
+        </div>
+        <div class="post-poster">
+            <img data-ng-src="{{post.posterSrc}}">
+            <a class="post-category" href="#/category/{{post.category}}">{{categories[post.category]}}</a>
+            <div class="post-tags-list">
+                <a class="tag-item"
+                      href="#/tag/{{tagKey}}"
+                      data-ng-repeat="tagKey in post.tags">{{tags[tagKey]}}</a>
+            </div>
+        </div>
+        <div class="post-description post-content">
+            <p data-ng-bind-html="sce.trustAsHtml(post.content)"></p>
+        </div>
+    </div>
+</div>
