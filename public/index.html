@@ -15,9 +15,9 @@
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-xs-12 col-md-8">
                     <div class="header-logo"></div>
-                    <nav class="header-nav">
+                    <nav class="header-nav hidden-xs hidden-sm">
                         <ul>
                             <li>
                                 <a href="#/" class="link active">Home</a>
@@ -30,8 +30,12 @@
                             </li>
                         </ul>
                     </nav>
+                    <div class="menu-expander visible-xs visible-sm">
+                        <span class="title">Menu</span>
+                        <div class="menu-btn"></div>
+                    </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-md-4 hidden-xs hidden-sm">
                     <div class="search-bar">
                         <div class="search-btn"></div>
                     </div>
@@ -44,10 +48,10 @@
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-xs-12 col-md-8">
                     <ng-view></ng-view>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-md-4 hidden-xs hidden-sm">
                     <aside class="sidebar">
                         <div class="sidebar-block">
                             <div class="wide-btn">Suggest own article</div>
@@ -112,23 +116,33 @@
 </main>
 <footer>
     <div class="wrapper">
-        <div class="footer-content">
-            <span class="logo"></span>
-            <nav class="footer-nav">
-                <ul>
-                    <li>
-                        <a href="#/" class="link">Home</a>
-                    </li>
-                    <li>
-                        <a href="#/about" class="link">About</a>
-                    </li>
-                    <li>
-                        <a href="#/" class="link">Forum</a>
-                    </li>
-                </ul>
-            </nav>
-            <span class="copyright">© 2016 - qwes.org. All Rights Reserved. Designed & Developed by
-                <a href="" class="developer-link">ozadev</a></span>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="footer-content">
+                        <div>
+                            <span class="logo"></span>
+                        </div>
+                        <nav class="footer-nav hidden-xs">
+                            <ul>
+                                <li>
+                                    <a href="#/" class="link">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#/about" class="link">About</a>
+                                </li>
+                                <li>
+                                    <a href="#/" class="link">Forum</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div>
+                            <span class="copyright">© 2016 - qwes.org. All Rights Reserved. Designed & Developed by
+                                <a href="" class="developer-link">ozadev</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

@@ -26,7 +26,7 @@ body {
   //min-height: 100vh;
 }
 
-a, a:hover, a:visited, a:link, a:active {
+a, a:hover, a:visited, a:active {
   text-decoration: none;
   color: inherit;
 }
@@ -38,6 +38,19 @@ a, a:hover, a:visited, a:link, a:active {
   }
 }
 
+.col-xs-12 {
+  padding-left: 10px;
+  padding-right: 10px;
+  @include tablet {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+//[class*='col-xs'] { /* contains col-lg in class name */
+//  padding-left: 10px !important;
+//  padding-right: 10px !important;
+//}
 
 //
 // Header section
@@ -45,24 +58,35 @@ a, a:hover, a:visited, a:link, a:active {
 
 header {
   //height: $header-height;
-  margin-bottom: $header-height - $header-content-height;
+  margin-bottom: $header-height-mobile - $header-content-height-mobile;
+  @include tablet {
+    margin-bottom: $header-height - $header-content-height;
+  }
 }
 
 .header-logo {
   display: inline-block;
   //remove additional height
   vertical-align: top;
-  width: 215px;
-  height: 97px;
   margin: 0;
   padding: 0;
-  background-image: url('./../img/logo.png');
+  width: 170px;
+  height: 75px;
+  background-image: url('./../img/logo-mobile.png');
+  @include tablet {
+    width: 215px;
+    height: 97px;
+    background-image: url('./../img/logo.png');
+  }
 }
 
 .header-nav {
-  line-height: $header-content-height;
+  line-height: $header-content-height-mobile;
   float: right;
   margin-right: $col-main-margin-right;
+  @include tablet {
+    line-height: $header-content-height;
+  }
   ul {
     padding: 0;
     margin: 0;
@@ -92,8 +116,11 @@ header {
 }
 
 .search-bar {
-  line-height: $header-content-height;
+  line-height: $header-content-height-mobile;
   text-align: right;
+  @include tablet {
+    line-height: $header-content-height;
+  }
   .search-btn {
     display: inline-block;
     vertical-align: middle;
@@ -105,6 +132,45 @@ header {
     transition: $transition-link-time;
     &:hover {
       background-color: $color-primary-active;
+    }
+  }
+}
+
+.menu-expander {
+  cursor: pointer;
+  line-height: $header-content-height-mobile;
+  float: right;
+  @include tablet {
+    margin-right: 15px;
+    line-height: $header-content-height;
+  }
+  .menu-btn {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 35px;
+    border-radius: 2px;
+    background: $color-primary-dark url('./../img/menu-icon.png') no-repeat center;
+    transition: $transition-link-time;
+    @include tablet {
+      width: 50px;
+      height: 45px;
+    }
+  }
+  .title {
+    margin-right: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: $color-primary-dark;
+    vertical-align: middle;
+    transition: $transition-link-time;
+  }
+  &:hover {
+    .menu-btn {
+      background-color: $color-primary-active;
+    }
+    .title {
+      color: $color-primary-active;
     }
   }
 }
@@ -124,13 +190,21 @@ p {
 }
 
 .post {
-  margin-right: $col-main-margin-right;
+  @include tablet {
+    margin-right: 15px;
+  }
+  @include laptop {
+    margin-right: $col-main-margin-right;
+  }
 }
 
 .post-separator {
-  margin: 8px -15px 15px 0;
+  margin: 8px 0 15px 0;
   height: 1px;
   background-color: #e1e1e1;
+  @include tablet {
+    margin: 8px -15px 15px 0;
+  }
 }
 
 .post-poster {
@@ -141,37 +215,53 @@ p {
   .post-category {
     font-family: 'Open Sans', sans-serif;
     position: absolute;
-    top: 25px;
-    right: -15px;
     display: inline-block;
-    padding: 7px 10px;
-    font-size: 18px;
     font-weight: 300;
     background-color: $color-primary-dark;
     color: $color-primary-light;
     border-radius: 2px;
     transition: $transition-link-time;
+    top: 0;
+    right: 0;
+    padding: 5px 8px;
+    font-size: 16px;
+    @include tablet {
+      top: 25px;
+      right: -15px;
+      padding: 7px 10px;
+      font-size: 18px;
+    }
     &:hover {
       background-color: $color-primary-active;
     }
+    //box-shadow: 0 0 5px rgba(0,0,0,0.5);
   }
   .post-tags-list {
     position: absolute;
-    left: $col-main-content-margin-left;
-    bottom: $col-main-content-margin-left;
+    left: 10px;
+    bottom: 10px;
+    @include tablet {
+      left: $col-main-content-margin-left;
+      bottom: $col-main-content-margin-left;
+    }
   }
 }
 
 .tag-item {
   font-family: 'Open Sans', sans-serif;
   display: inline-block;
-  padding: 1px 10px;
-  margin: 13px 10px 0 0;
-  font-size: 14px;
+  padding: 0 6px;
+  margin: 10px 6px 0 0;
+  font-size: 13px;
   background-color: $color-primary-dark;
   color: $color-primary-light;
   border-radius: 2px;
   transition: $transition-link-time;
+  @include tablet {
+    font-size: 14px;
+    padding: 1px 10px;
+    margin: 13px 10px 0 0;
+  }
   &:hover {
     background-color: $color-primary-active;
     color: $color-primary-light;
@@ -182,11 +272,15 @@ p {
 }
 
 .post-title {
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 800;
   color: $color-post-text;
-  margin: 15px 0 12px 0;
+  margin: 10px 0 8px 0;
   transition: $transition-link-time;
+  @include tablet {
+    font-size: 26px;
+    margin: 15px 0 12px 0;
+  }
   a {
     transition: $transition-link-time;
   }
@@ -198,14 +292,28 @@ p {
   }
 }
 
+.post-preview {
+  font-size: 14px;
+  margin-bottom: 5px;
+  @include tablet {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+}
+
 .post-description {
-  margin-left: $col-main-content-margin-left;
+  @include tablet {
+    margin-left: $col-main-content-margin-left;
+  }
   .post-date, .post-author, .post-comments {
-    font-size: 16px;
+    font-size: 14px;
     font-style: italic;
     color: $color-primary-text;
     padding-left: 25px;
     margin-right: 30px;
+    @include tablet {
+      font-size: 16px;
+    }
   }
   .post-date {
     background: url('./../img/time-icon.png') no-repeat left;
@@ -352,13 +460,20 @@ footer {
 }
 
 .footer-content {
-  padding: 40px 0;
+  padding: 20px 0;
   text-align: center;
+  @include tablet {
+    padding: 40px 0;
+  }
   .logo {
     display: inline-block;
     width: 144px;
     height: 46px;
     background-image: url('./../img/footer-logo.png');
+    margin-bottom: 15px;
+    @include tablet {
+      margin-bottom: 0;
+    }
   }
 }
 
