@@ -30,9 +30,20 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="menu-expander visible-xs visible-sm">
-                        <span class="title">Menu</span>
-                        <div class="menu-btn"></div>
+                    <div class="menu-btn visible-xs visible-sm">
+                        <!--<div class="menu-switcher"-->
+                             <!--data-ng-class="{'menu-open': switcherOpen, 'menu-close': !switcherOpen}"-->
+                             <!--data-ng-init="switcherOpen = true;"-->
+                             <!--data-ng-click="switcherOpen = !switcherOpen;">-->
+                            <!--<div class="line-top"></div>-->
+                            <!--<div class="line-middle"></div>-->
+                            <!--<div class="line-bottom"></div>-->
+                            <!--<div class="title">Menu</div>-->
+                        <!--</div>-->
+                        <menu-switch-btn data-menu-state="menuState"
+                                         data-title="Menu"
+                                         data-ng-init="menuState = {opened: false};"
+                                         data-ng-click="menuState.opened = !menuState.opened;"></menu-switch-btn>
                     </div>
                 </div>
                 <div class="col-md-4 hidden-xs hidden-sm">
@@ -167,6 +178,7 @@
 
 <script src="./js/app.module.js"></script>
 <script src="./js/app.config.js"></script>
+<script src="./js/directives/menuSwitchBtn.directive.js"></script>
 <script src="./js/services/getPosts.service.js"></script>
 <script src="./js/controllers/app.controller.js"></script>
 <script src="./js/controllers/postsList.controller.js"></script>

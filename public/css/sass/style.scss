@@ -136,42 +136,15 @@ header {
   }
 }
 
-.menu-expander {
+.menu-btn {
   cursor: pointer;
   line-height: $header-content-height-mobile;
   float: right;
+  @include menu-switcher(40px, 35px, 34px, 3px, 3px, 4px, 2px, $color-primary-light, $color-primary-dark, $color-primary-active, $transition-link-time);
   @include tablet {
     margin-right: 15px;
     line-height: $header-content-height;
-  }
-  .menu-btn {
-    display: inline-block;
-    vertical-align: middle;
-    width: 40px;
-    height: 35px;
-    border-radius: 2px;
-    background: $color-primary-dark url('./../img/menu-icon.png') no-repeat center;
-    transition: $transition-link-time;
-    @include tablet {
-      width: 50px;
-      height: 45px;
-    }
-  }
-  .title {
-    margin-right: 10px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
-    color: $color-primary-dark;
-    vertical-align: middle;
-    transition: $transition-link-time;
-  }
-  &:hover {
-    .menu-btn {
-      background-color: $color-primary-active;
-    }
-    .title {
-      color: $color-primary-active;
-    }
+    @include menu-switcher(50px, 45px, 34px, 3px, 3px, 8px, 6px, $color-primary-light, $color-primary-dark, $color-primary-active, $transition-link-time);
   }
 }
 
