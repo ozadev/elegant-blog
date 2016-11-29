@@ -53,6 +53,14 @@ a, a:hover, a:visited, a:active {
 //}
 
 //
+// Full screen menu
+//
+
+.full-menu {
+
+}
+
+//
 // Header section
 //
 
@@ -172,7 +180,7 @@ p {
 }
 
 .post-separator {
-  margin: 8px 0 15px 0;
+  margin: 8px 0 10px 0;
   height: 1px;
   background-color: #e1e1e1;
   @include tablet {

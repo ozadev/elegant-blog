@@ -22,6 +22,7 @@ $desktop-width:  1200px;
 @mixin menu-switcher($width, $height, $line-width, $line-height, $line-offset, $lines-offset-top, $title-offset-bottom, $color,
                     $background-color, $hover-background-color, $hover-time) {
   .menu-switcher {
+    cursor: pointer;
     position: relative;
     display: inline-block;
     vertical-align: middle;
