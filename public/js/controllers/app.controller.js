@@ -21,5 +21,24 @@ app.controller("mainCtrl", [
 
         $scope.sce = $sce;
 
+        $scope.slideout = new Slideout({
+            'panel': document.getElementById('panel'),
+            'menu': document.getElementById('menu'),
+            'padding': 256,
+            'tolerance': 70,
+            'side': 'right'
+        });
+
+        $scope.menuState = {opened: false};
+
+        $scope.slideout.on('open', function() {
+            $scope.$apply($scope.menuState.opened = true);
+
+        });
+
+        $scope.slideout.on('close', function() {
+            $scope.$apply($scope.menuState.opened = false);
+        });
+
 
     }]);

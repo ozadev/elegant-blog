@@ -10,125 +10,20 @@
     <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body data-ng-controller="mainCtrl">
-<div class="full-menu"></div>
-<header>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-md-8">
-                    <div class="header-logo"></div>
-                    <nav class="header-nav hidden-xs hidden-sm">
-                        <ul>
-                            <li>
-                                <a href="#/" class="link active">Home</a>
-                            </li>
-                            <li>
-                                <a href="#/about" class="link">About</a>
-                            </li>
-                            <li>
-                                <a href="#/" class="link">Forum</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="menu-btn visible-xs visible-sm">
-                        <menu-switch-btn data-menu-state="menuState"
-                                         data-title="Menu"
-                                         data-ng-init="menuState = {opened: false};"
-                                         data-ng-click="menuState.opened = !menuState.opened;"></menu-switch-btn>
-                    </div>
-                </div>
-                <div class="col-md-4 hidden-xs hidden-sm">
-                    <div class="search-bar">
-                        <div class="search-btn"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<main>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-md-8">
-                    <ng-view></ng-view>
-                </div>
-                <div class="col-md-4 hidden-xs hidden-sm">
-                    <aside class="sidebar">
-                        <div class="sidebar-block">
-                            <div class="wide-btn">Suggest own article</div>
-                        </div>
-                        <div class="sidebar-block">
-                            <h3 class="title-line">
-                                <span class="title">Categories</span>
-                            </h3>
-                            <nav class="categories-nav">
-                                <ul>
-                                    <li data-ng-repeat="(catKey, category) in categories">
-                                        <a class="link" href="#/category/{{catKey}}">{{category}}</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="sidebar-block">
-                            <h3 class="title-line">
-                                <span class="title">Popular tags</span>
-                            </h3>
-                            <div>
-                                <a class="tag-item"
-                                   href="#/tag/{{tagKey}}"
-                                   data-ng-repeat="(tagKey, tag) in tags">{{tag}}</a>
-                            </div>
-                        </div>
-                        <div class="sidebar-block">
-                            <h3 class="title-line">
-                                <span class="title">Popular posts</span>
-                            </h3>
-                            <div class="popular-posts">
-                                <a class="link"
-                                   href="#/post/{{post.id}}"
-                                   data-ng-repeat="post in popularPostsList">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="row">
-                                                    <img data-ng-src="{{post.posterSrc}}">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-9">
-                                                <div class="row">
-                                                    <h3 class="post-title">{{post.title}}</h3>
-                                                    <span class="post-date">{{post.date}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="sidebar-block">
-                            <div class="wide-btn">Subscribe</div>
-                        </div>
-                    </aside>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</main>
-<footer>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="footer-content">
-                        <div>
-                            <span class="logo"></span>
-                        </div>
-                        <nav class="footer-nav hidden-xs">
+<div id="menu" class="full-menu ">
+    <h2>Menu</h2>
+</div>
+<div id="panel">
+    <header>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <div class="header-logo"></div>
+                        <nav class="header-nav hidden-xs hidden-sm">
                             <ul>
                                 <li>
-                                    <a href="#/" class="link">Home</a>
+                                    <a href="#/" class="link active">Home</a>
                                 </li>
                                 <li>
                                     <a href="#/about" class="link">About</a>
@@ -138,17 +33,124 @@
                                 </li>
                             </ul>
                         </nav>
-                        <div>
-                            <span class="copyright">© 2016 - qwes.org. All Rights Reserved. Designed & Developed by
-                                <a href="" class="developer-link">ozadev</a></span>
+                        <div class="menu-btn visible-xs visible-sm">
+                            <menu-switch-btn data-menu-state="menuState"
+                                             data-title="Menu"
+                                             data-ng-click="menuState.opened = !menuState.opened; slideout.toggle();"></menu-switch-btn>
+                        </div>
+                    </div>
+                    <div class="col-md-4 hidden-xs hidden-sm">
+                        <div class="search-bar">
+                            <div class="search-btn"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </header>
+    <main>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <ng-view></ng-view>
+                    </div>
+                    <div class="col-md-4 hidden-xs hidden-sm">
+                        <aside class="sidebar">
+                            <div class="sidebar-block">
+                                <div class="wide-btn">Suggest own article</div>
+                            </div>
+                            <div class="sidebar-block">
+                                <h3 class="title-line">
+                                    <span class="title">Categories</span>
+                                </h3>
+                                <nav class="categories-nav">
+                                    <ul>
+                                        <li data-ng-repeat="(catKey, category) in categories">
+                                            <a class="link" href="#/category/{{catKey}}">{{category}}</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="sidebar-block">
+                                <h3 class="title-line">
+                                    <span class="title">Popular tags</span>
+                                </h3>
+                                <div>
+                                    <a class="tag-item"
+                                       href="#/tag/{{tagKey}}"
+                                       data-ng-repeat="(tagKey, tag) in tags">{{tag}}</a>
+                                </div>
+                            </div>
+                            <div class="sidebar-block">
+                                <h3 class="title-line">
+                                    <span class="title">Popular posts</span>
+                                </h3>
+                                <div class="popular-posts">
+                                    <a class="link"
+                                       href="#/post/{{post.id}}"
+                                       data-ng-repeat="post in popularPostsList">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <div class="row">
+                                                        <img data-ng-src="{{post.posterSrc}}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="row">
+                                                        <h3 class="post-title">{{post.title}}</h3>
+                                                        <span class="post-date">{{post.date}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="sidebar-block">
+                                <div class="wide-btn">Subscribe</div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="footer-content">
+                            <div>
+                                <span class="logo"></span>
+                            </div>
+                            <nav class="footer-nav hidden-xs">
+                                <ul>
+                                    <li>
+                                        <a href="#/" class="link">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="#/about" class="link">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="#/" class="link">Forum</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div>
+                                <span class="copyright">© 2016 - qwes.org. All Rights Reserved. Designed & Developed by
+                                    <a href="" class="developer-link">ozadev</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
 
 <!--<script src="./node_modules/angular/angular.min.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -166,6 +168,7 @@
 
 <!--<script src="./node_modules/angular-route/angular-route.min.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
 
 <script src="./js/app.module.js"></script>
 <script src="./js/app.config.js"></script>
@@ -177,5 +180,8 @@
 <!--<script src="/js/build/js/directives/clickOutside.directive.js"></script>-->
 <!--<script src="/js/build/js/directives/elemNotification.directive.js"></script>-->
 <!--<script src="/js/build/js/controllers/mainController.js"></script>-->
+
+<script>
+</script>
 </body>
 </html>

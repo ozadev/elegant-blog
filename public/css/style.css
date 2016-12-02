@@ -482,3 +482,29 @@ footer {
     .copyright .developer-link:hover {
       color: #1B98E0; }
 
+.slideout-menu {
+  background-color: #1e4e8a;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 256px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: none; }
+
+.slideout-panel {
+  background-color: #fefefe;
+  position: relative;
+  z-index: 1;
+  will-change: transform; }
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden; }
+
+.slideout-open .slideout-menu {
+  display: block; }
+
