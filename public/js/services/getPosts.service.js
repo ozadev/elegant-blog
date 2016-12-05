@@ -24,9 +24,9 @@ app.factory('getPosts', function($http) {
 
         getPostById: function(id) {
             return service.getPostsAll().then(function (posts) {
-                return posts.find(function(item) {
+                return posts.filter(function(item) {
                     return item.id === +id;
-                })
+                })[0];
             });
         }
 

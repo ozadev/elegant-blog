@@ -25,14 +25,14 @@ app.controller("mainCtrl", [
         $scope.sce = $sce;
 
 
-        var slideoutMenuWidth = 0;
+        var slideoutMenuWidth = 250;
 
-        if ($scope.deviceScreenType === 'mobile') {
-            slideoutMenuWidth = $window.innerWidth - 60;
-        }
-        if ($scope.deviceScreenType === 'tablet') {
-            slideoutMenuWidth = 250;
-        }
+        // if ($scope.deviceScreenType === 'mobile') {
+        //     slideoutMenuWidth = $window.innerWidth - 60;
+        // }
+        // if ($scope.deviceScreenType === 'tablet') {
+        //     slideoutMenuWidth = 250;
+        // }
 
         $scope.slideout = new Slideout({
             'panel': document.getElementById('panel'),
@@ -44,13 +44,33 @@ app.controller("mainCtrl", [
 
         $scope.menuState = {opened: false};
 
-        $scope.slideout.on('open', function() {
-            $scope.$apply($scope.menuState.opened = true);
+        $scope.slideout.on('beforeopen', function() {
+            console.log('beforeopen');
+            if (!$scope.menuState.opened) {
+                $scope.$apply($scope.menuState.opened = true);
+            }
         });
 
-        $scope.slideout.on('close', function() {
-            $scope.$apply($scope.menuState.opened = false);
+        // $scope.slideout.on('open', function() {
+        //     console.log('open');
+        //     // if (!$scope.menuState.opened) {
+        //     $scope.$apply($scope.menuState.opened = true);
+        //     // }
+        // });
+
+        $scope.slideout.on('beforeclose', function() {
+            console.log('beforeclose');
+            if ($scope.menuState.opened) {
+                $scope.$apply($scope.menuState.opened = false);
+            }
         });
+        // $scope.slideout.on('close', function() {
+        //     console.log('close');
+        //     // if ($scope.menuState.opened) {
+        //     $scope.$apply($scope.menuState.opened = false);
+        //     // }
+        // });
+
 
 
     }]);

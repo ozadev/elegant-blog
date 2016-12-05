@@ -10,10 +10,51 @@
     <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body data-ng-controller="mainCtrl">
-<div id="menu" class="full-menu ">
-    <h2>Menu</h2>
+<div id="menu" class="full-menu">
+    <div class="container-fluid">
+        <div class="menu-block">
+            <h3 class="title-line">
+                <span class="title">Menu</span>
+            </h3>
+            <ul>
+                <li>
+                    <a href="#/" class="link active" data-ng-click="menuState.opened = false; slideout.close();">Home</a>
+                </li>
+                <li>
+                    <a href="#/about" class="link" data-ng-click="menuState.opened = false; slideout.close();">About</a>
+                </li>
+                <li>
+                    <a href="#/" class="link" data-ng-click="menuState.opened = false; slideout.close();">Forum</a>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-block">
+            <h3 class="title-line">
+                <span class="title">Categories</span>
+            </h3>
+            <ul>
+                <li data-ng-repeat="(catKey, category) in categories">
+                    <a class="link"
+                       href="#/category/{{catKey}}"
+                       data-ng-click="menuState.opened = false; slideout.close();">{{category}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-block">
+            <h3 class="title-line">
+                <span class="title">Popular tags</span>
+            </h3>
+            <ul>
+                <li data-ng-repeat="(tagKey, tag) in tags">
+                    <a class="link"
+                       href="#/tag/{{tagKey}}"
+                       data-ng-click="menuState.opened = false; slideout.close();">{{tag}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
-<div id="panel">
+<div id="panel" class="main-panel">
     <header>
         <div class="wrapper">
             <div class="container-fluid">

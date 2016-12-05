@@ -15,6 +15,9 @@ a, a:hover, a:visited, a:active, a:link {
     .wrapper {
       width: 1200px; } }
 
+.main-panel {
+  min-height: 100vh; }
+
 .col-xs-12 {
   padding-left: 10px;
   padding-right: 10px; }
@@ -22,6 +25,50 @@ a, a:hover, a:visited, a:active, a:link {
     .col-xs-12 {
       padding-left: 15px;
       padding-right: 15px; } }
+
+.full-menu {
+  padding-top: 10px;
+  color: #F8F8FF; }
+  .full-menu .title-line {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    height: 24px;
+    margin: 15px 0;
+    line-height: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+    position: relative; }
+    .full-menu .title-line::after {
+      z-index: -1;
+      content: " ";
+      position: absolute;
+      left: 0;
+      bottom: 50%;
+      width: 100%;
+      height: 1px;
+      background-color: #F8F8FF; }
+    .full-menu .title-line .title {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding-right: 10px;
+      background-color: #1e4e8a; }
+  .full-menu ul {
+    margin: 0 0 0 10px;
+    padding: 0;
+    list-style-type: none; }
+  .full-menu .link {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 300;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    color: #F8F8FF; }
+    .full-menu .link:hover {
+      color: #1B98E0; }
 
 header {
   margin-bottom: 10px; }
@@ -291,7 +338,7 @@ p {
   .tag-item:hover {
     background-color: #1B98E0;
     color: #F8F8FF; }
-  .tag-item:visited {
+  .tag-item:visited, .tag-item:link {
     color: #F8F8FF; }
 
 .post-title {
@@ -492,8 +539,7 @@ footer {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   display: none;
-  width: -webkit-calc(100vw - 60px);
-  width: calc(100vw - 60px); }
+  width: 250px; }
   @media (min-width: 768px) {
     .slideout-menu {
       width: 250px; } }
