@@ -26,7 +26,7 @@ body {
   //min-height: 100vh;
 }
 
-a, a:hover, a:visited, a:active {
+a, a:hover, a:visited, a:active, a:link {
   text-decoration: none;
   color: inherit;
 }
@@ -485,21 +485,24 @@ footer {
 //
 
 .slideout-menu {
-  background-color: #1e4e8a;
+  background-color: $color-primary-dark;
   position: fixed;
   //left: 0;
   top: 0;
   bottom: 0;
   right: 0;
   z-index: 0;
-  width: 256px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   display: none;
+  width: calc(100vw - 60px);
+  @include tablet {
+    width: 250px;
+  }
 }
 
 .slideout-panel {
-  background-color: #fefefe;
+  background-color: $color-primary-light;
   position: relative;
   z-index: 1;
   will-change: transform;

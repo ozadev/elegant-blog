@@ -5,7 +5,7 @@ body {
   font-family: 'PT Sans', sans-serif;
   background-color: #F8F8FF; }
 
-a, a:hover, a:visited, a:active {
+a, a:hover, a:visited, a:active, a:link {
   text-decoration: none;
   color: inherit; }
 
@@ -489,13 +489,17 @@ footer {
   bottom: 0;
   right: 0;
   z-index: 0;
-  width: 256px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  display: none; }
+  display: none;
+  width: -webkit-calc(100vw - 60px);
+  width: calc(100vw - 60px); }
+  @media (min-width: 768px) {
+    .slideout-menu {
+      width: 250px; } }
 
 .slideout-panel {
-  background-color: #fefefe;
+  background-color: #F8F8FF;
   position: relative;
   z-index: 1;
   will-change: transform; }

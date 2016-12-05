@@ -6,6 +6,9 @@ app.controller("mainCtrl", [
     '$sce',
     function ($scope, $window, $http, $sce) {
 
+        $scope.deviceScreenType = ($window.innerWidth < 768) ? 'mobile' :
+            ($window.innerWidth < 992) ? 'tablet' : 'desktop';
+
         $http.get('data/categories.json', { cache: true }).then(function(resp) {
             $scope.categories = resp.data;
         });
@@ -21,10 +24,20 @@ app.controller("mainCtrl", [
 
         $scope.sce = $sce;
 
+
+        var slideoutMenuWidth = 0;
+
+        if ($scope.deviceScreenType === 'mobile') {
+            slideoutMenuWidth = $window.innerWidth - 60;
+        }
+        if ($scope.deviceScreenType === 'tablet') {
+            slideoutMenuWidth = 250;
+        }
+
         $scope.slideout = new Slideout({
             'panel': document.getElementById('panel'),
             'menu': document.getElementById('menu'),
-            'padding': 256,
+            'padding': slideoutMenuWidth,
             'tolerance': 70,
             'side': 'right'
         });
