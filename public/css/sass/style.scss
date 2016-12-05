@@ -176,13 +176,26 @@ header {
 
 .search-bar {
   line-height: $header-content-height-mobile;
-  text-align: right;
+  height: $header-content-height-mobile;
   @include tablet {
     line-height: $header-content-height;
+    height: $header-content-height;
+  }
+  .search-group {
+    vertical-align: middle;
+    display: inline-block;
+    &:hover {
+      input.search-field {
+        width: 100%;
+        visibility: visible;
+      }
+      .search-btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
   }
   .search-btn {
-    display: inline-block;
-    vertical-align: middle;
     width: 50px;
     height: 45px;
     border-radius: 3px;
@@ -190,8 +203,17 @@ header {
     cursor: pointer;
     transition: $transition-link-time;
     &:hover {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
       background-color: $color-primary-active;
     }
+  }
+  input.search-field {
+    height: 45px;
+    width: 10px;
+    float: right;
+    transition: $transition-link-time;
+    visibility: hidden;
   }
 }
 

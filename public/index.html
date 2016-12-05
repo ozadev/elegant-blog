@@ -12,45 +12,49 @@
 <body data-ng-controller="mainCtrl">
 <div id="menu" class="full-menu">
     <div class="container-fluid">
-        <div class="menu-block">
-            <h3 class="title-line">
-                <span class="title">Menu</span>
-            </h3>
-            <ul>
-                <li>
-                    <a href="#/" class="link active" data-ng-click="menuState.opened = false; slideout.close();">Home</a>
-                </li>
-                <li>
-                    <a href="#/about" class="link" data-ng-click="menuState.opened = false; slideout.close();">About</a>
-                </li>
-                <li>
-                    <a href="#/" class="link" data-ng-click="menuState.opened = false; slideout.close();">Forum</a>
-                </li>
-            </ul>
-        </div>
-        <div class="menu-block">
-            <h3 class="title-line">
-                <span class="title">Categories</span>
-            </h3>
-            <ul>
-                <li data-ng-repeat="(catKey, category) in categories">
-                    <a class="link"
-                       href="#/category/{{catKey}}"
-                       data-ng-click="menuState.opened = false; slideout.close();">{{category}}</a>
-                </li>
-            </ul>
-        </div>
-        <div class="menu-block">
-            <h3 class="title-line">
-                <span class="title">Popular tags</span>
-            </h3>
-            <ul>
-                <li data-ng-repeat="(tagKey, tag) in tags">
-                    <a class="link"
-                       href="#/tag/{{tagKey}}"
-                       data-ng-click="menuState.opened = false; slideout.close();">{{tag}}</a>
-                </li>
-            </ul>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="menu-block">
+                    <h3 class="title-line">
+                        <span class="title">Menu</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <a href="#/" class="link active" data-ng-click="menuState.opened = false; slideout.close();">Home</a>
+                        </li>
+                        <li>
+                            <a href="#/about" class="link" data-ng-click="menuState.opened = false; slideout.close();">About</a>
+                        </li>
+                        <li>
+                            <a href="#/" class="link" data-ng-click="menuState.opened = false; slideout.close();">Forum</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-block">
+                    <h3 class="title-line">
+                        <span class="title">Categories</span>
+                    </h3>
+                    <ul>
+                        <li data-ng-repeat="(catKey, category) in categories">
+                            <a class="link"
+                               href="#/category/{{catKey}}"
+                               data-ng-click="menuState.opened = false; slideout.close();">{{category}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-block">
+                    <h3 class="title-line">
+                        <span class="title">Popular tags</span>
+                    </h3>
+                    <ul>
+                        <li data-ng-repeat="(tagKey, tag) in tags">
+                            <a class="link"
+                               href="#/tag/{{tagKey}}"
+                               data-ng-click="menuState.opened = false; slideout.close();">{{tag}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -82,7 +86,14 @@
                     </div>
                     <div class="col-md-4 hidden-xs hidden-sm">
                         <div class="search-bar">
-                            <div class="search-btn"></div>
+                            <div class="search-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control search-field"/>
+                                    <span class="input-group-btn">
+                                        <div class="search-btn"></div>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
