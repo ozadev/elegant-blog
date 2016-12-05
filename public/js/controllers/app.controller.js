@@ -33,7 +33,6 @@ app.controller("mainCtrl", [
 
         $scope.slideout.on('open', function() {
             $scope.$apply($scope.menuState.opened = true);
-
         });
 
         $scope.slideout.on('close', function() {
