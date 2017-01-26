@@ -1,7 +1,10 @@
+(function () {
+    'use strict';
 
-var app = angular.module('blogApp', [
-    'ngRoute'
-    // 'ui.router'
+    angular.module('blogApp', [
+        'ui.router'
     // 'ngCookies',
     // 'ngAnimate',
-]);
+    ]);
+
+})();

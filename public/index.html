@@ -4,184 +4,69 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>qwes.org home</title>
-    <!--<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/style.css"/>
 </head>
 <body data-ng-controller="mainCtrl">
-<div id="menu" class="full-menu">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="menu-block">
-                    <h3 class="title-line">
-                        <span class="title">Menu</span>
-                    </h3>
-                    <ul>
-                        <li>
-                            <a href="#/" class="link active" data-ng-click="menuState.opened = false; slideout.close();">Home</a>
-                        </li>
-                        <li>
-                            <a href="#/about" class="link" data-ng-click="menuState.opened = false; slideout.close();">About</a>
-                        </li>
-                        <li>
-                            <a href="#/" class="link" data-ng-click="menuState.opened = false; slideout.close();">Forum</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="menu-block">
-                    <h3 class="title-line">
-                        <span class="title">Categories</span>
-                    </h3>
-                    <ul>
-                        <li data-ng-repeat="(catKey, category) in categories">
-                            <a class="link"
-                               href="#/category/{{catKey}}"
-                               data-ng-click="menuState.opened = false; slideout.close();">{{category}}</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="menu-block">
-                    <h3 class="title-line">
-                        <span class="title">Popular tags</span>
-                    </h3>
-                    <ul>
-                        <li data-ng-repeat="(tagKey, tag) in tags">
-                            <a class="link"
-                               href="#/tag/{{tagKey}}"
-                               data-ng-click="menuState.opened = false; slideout.close();">{{tag}}</a>
-                        </li>
-                    </ul>
+    <div id="menu" class="full-menu">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="menu-block">
+                        <h3 class="title-line">
+                            <span class="title">Menu</span>
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="#/" class="link active" data-ng-click="menuState.opened = false; slideout.close();">Home</a>
+                            </li>
+                            <li>
+                                <a href="#/about" class="link" data-ng-click="menuState.opened = false; slideout.close();">About</a>
+                            </li>
+                            <li>
+                                <a href="#/" class="link" data-ng-click="menuState.opened = false; slideout.close();">Forum</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-block">
+                        <h3 class="title-line">
+                            <span class="title">Categories</span>
+                        </h3>
+                        <ul>
+                            <li data-ng-repeat="(catKey, category) in categories">
+                                <a class="link"
+                                   href="#/category/{{catKey}}"
+                                   data-ng-click="menuState.opened = false; slideout.close();">{{category}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-block">
+                        <h3 class="title-line">
+                            <span class="title">Popular tags</span>
+                        </h3>
+                        <ul>
+                            <li data-ng-repeat="(tagKey, tag) in tags">
+                                <a class="link"
+                                   href="#/tag/{{tagKey}}"
+                                   data-ng-click="menuState.opened = false; slideout.close();">{{tag}}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div id="panel" class="main-panel">
-    <header>
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-12 col-md-8">
-                        <div class="header-logo"></div>
-                        <nav class="header-nav hidden-xs hidden-sm">
-                            <ul>
-                                <li>
-                                    <a href="#/" class="link active">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#/about" class="link">About</a>
-                                </li>
-                                <li>
-                                    <a href="#/" class="link">Forum</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="menu-btn visible-xs visible-sm">
-                            <menu-switch-btn data-menu-state="menuState"
-                                             data-title="Menu"
-                                             data-ng-click="menuState.opened = !menuState.opened; slideout.toggle();"></menu-switch-btn>
-                        </div>
-                    </div>
-                    <div class="col-md-4 hidden-xs hidden-sm">
-                        <div class="search-bar">
-                            <div class="search-group">
-                                <div class="input-group">
-                                    <input type="text" class="form-control search-field"/>
-                                    <span class="input-group-btn">
-                                        <div class="search-btn"></div>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-12 col-md-8">
-                        <ng-view></ng-view>
-                    </div>
-                    <div class="col-md-4 hidden-xs hidden-sm">
-                        <aside class="sidebar">
-                            <div class="sidebar-block">
-                                <div class="wide-btn">Suggest own article</div>
-                            </div>
-                            <div class="sidebar-block">
-                                <h3 class="title-line">
-                                    <span class="title">Categories</span>
-                                </h3>
-                                <nav class="categories-nav">
-                                    <ul>
-                                        <li data-ng-repeat="(catKey, category) in categories">
-                                            <a class="link" href="#/category/{{catKey}}">{{category}}</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="sidebar-block">
-                                <h3 class="title-line">
-                                    <span class="title">Popular tags</span>
-                                </h3>
-                                <div>
-                                    <a class="tag-item"
-                                       href="#/tag/{{tagKey}}"
-                                       data-ng-repeat="(tagKey, tag) in tags">{{tag}}</a>
-                                </div>
-                            </div>
-                            <div class="sidebar-block">
-                                <h3 class="title-line">
-                                    <span class="title">Popular posts</span>
-                                </h3>
-                                <div class="popular-posts">
-                                    <a class="link"
-                                       href="#/post/{{post.id}}"
-                                       data-ng-repeat="post in popularPostsList">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <div class="row">
-                                                        <img data-ng-src="{{post.posterSrc}}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <div class="row">
-                                                        <h3 class="post-title">{{post.title}}</h3>
-                                                        <span class="post-date">{{post.date}}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="sidebar-block">
-                                <div class="wide-btn">Subscribe</div>
-                            </div>
-                        </aside>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div class="wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="footer-content">
-                            <div>
-                                <span class="logo"></span>
-                            </div>
-                            <nav class="footer-nav hidden-xs">
+    <div id="panel" class="main-panel">
+        <header>
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                            <div class="header-logo"></div>
+                            <nav class="header-nav hidden-xs hidden-sm">
                                 <ul>
                                     <li>
-                                        <a href="#/" class="link">Home</a>
+                                        <a href="#/" class="link active">Home</a>
                                     </li>
                                     <li>
                                         <a href="#/about" class="link">About</a>
@@ -191,48 +76,74 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <div>
-                                <span class="copyright">© 2016 - qwes.org. All Rights Reserved. Designed & Developed by
-                                    <a href="" class="developer-link">ozadev</a></span>
+                            <div class="menu-btn visible-xs visible-sm">
+                                <menu-switch-btn data-menu-state="menuState"
+                                                 data-title="Menu"
+                                                 data-ng-click="menuState.opened = !menuState.opened; slideout.toggle();"></menu-switch-btn>
+                            </div>
+                        </div>
+                        <div class="col-md-4 hidden-xs hidden-sm">
+                            <div class="search-bar">
+                                <div class="search-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control search-field"/>
+                                        <span class="input-group-btn">
+                                            <div class="search-btn"></div>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-</div>
+        </header>
+        <main>
+            <div class="wrapper">
+                <ui-view></ui-view>
+            </div>
+        </main>
+        <footer>
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="footer-content">
+                                <div>
+                                    <span class="logo"></span>
+                                </div>
+                                <nav class="footer-nav hidden-xs">
+                                    <ul>
+                                        <li>
+                                            <a href="#/" class="link">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#/about" class="link">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="#/" class="link">Forum</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div>
+                                    <span class="copyright">© 2016 - qwes.org. All Rights Reserved. Designed & Developed by
+                                        <a href="" class="developer-link">ozadev</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
-<!--<script src="./node_modules/angular/angular.min.js"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
 
-<!--<script src="/js/node_modules/textangular/dist/textAngular-rangy.min.js"></script>-->
-<!--<script src="/js/node_modules/textangular/dist/textAngular-sanitize.min.js"></script>-->
-<!--<script src="/js/node_modules/textangular/dist/textAngular.min.js"></script>-->
+    <script src="/app/build.js"></script>
 
-<!--<script src="/js/node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>-->
-<!--<script src="/js/node_modules/angular-clipboard/angular-clipboard.js"></script>-->
-<!--<script src="/js/node_modules/ng-dialog/js/ngDialog.min.js"></script>-->
-
-<!--<script src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>-->
-
-<!--<script src="./node_modules/angular-route/angular-route.min.js"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
-
-<script src="/app/app.module.js"></script>
-<script src="app/app.config.js"></script>
-<script src="app/directives/menuSwitchBtn.directive.js"></script>
-<script src="app/services/getPosts.service.js"></script>
-<script src="app/controllers/app.controller.js"></script>
-<script src="app/controllers/postsList.controller.js"></script>
-<!--<script src="/js/build/js/directives/initFocus.directive.js"></script>-->
-<!--<script src="/js/build/js/directives/clickOutside.directive.js"></script>-->
-<!--<script src="/js/build/js/directives/elemNotification.directive.js"></script>-->
-<!--<script src="/js/build/js/controllers/mainController.js"></script>-->
-
-<script>
-</script>
+    <script></script>
 </body>
 </html>

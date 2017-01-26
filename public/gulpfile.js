@@ -1,44 +1,50 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
-var tinypng = require('gulp-tinypng-compress');
 var autoprefixer = require('gulp-autoprefixer');
-//var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify');
+// var ngmin = require('gulp-ngmin');
 
-
-gulp.task('default', ['sass', 'watch']);
 
 gulp.task('sass', function () {
-  return gulp.src('./css/sass/**/*.scss')
-      .pipe(sass().on('error', sass.logError))
-      .pipe(autoprefixer({
-          browsers: ['last 16 versions'],
-          cascade: false
-        }))
-      .pipe(concat("style.css"))
-      .pipe(gulp.dest('./css'));
-});
-
-gulp.task('tinypng', function () {
-  gulp.src('./img/**/*.{png,jpg,jpeg}')
-    .pipe(tinypng({
-      key: 'UtR0VibHihT058f4Dbw-lakZ1lmLt2EN',
-      sigFile: './img/.tinypng-sigs',
-      log: true
+  return gulp.src(['./assets/css/scss/variables.scss', './assets/css/scss/mixin.scss',  './assets/css/scss/style.scss', './app/**/*.scss', '!./node_modules/**/*.scss'])
+    .pipe(concat("style.css"))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 16 versions'],
+      cascade: false
     }))
-    .pipe(gulp.dest('./img'));
+    .pipe(gulp.dest('./assets/css/'));
 });
 
-//gulp.task('compress', function() {
-//  gulp.src('./develop/js/*.js')
-//    .pipe(concat('all.min.js'))
-//    .pipe(uglify())
-//    .pipe(gulp.dest('./build/js'))
-//});
+gulp.task('sass-min', function () {
+  return gulp.src(['./assets/css/scss/variables.scss', './assets/css/scss/mixin.scss',  './assets/css/scss/style.scss', './app/**/*.scss', '!./node_modules/**/*.scss'])
+    .pipe(concat("style.min.css"))
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 16 versions'],
+      cascade: false
+    }))
+    .pipe(gulp.dest('./assets/css/'));
+});
 
+gulp.task('build', function () {
+  return gulp.src(['./app/**/*.module.js', './app/**/*.js', '!./app/build.min.js', '!./app/build.js'])
+    .pipe(concat('build.js'))
+    .pipe(gulp.dest('./app/'));
+});
 
+gulp.task('compress', function () {
+  return gulp.src(['./app/**/*.module.js', './app/**/*.js', '!./app/build.min.js', '!./app/build.js'])
+    .pipe(concat('build.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./app/'));
+});
 
 gulp.task('watch', function () {
-  gulp.watch('./css/sass/**/*.scss', ['sass']);
-  //gulp.watch('./develop/js/*.js', ['compress']);
+  gulp.watch(['./**/*.scss', '!./node_modules/**/*.scss'], ['sass']);
+  gulp.watch(['./app/**/*.js', '!./app/build.js'], ['build']);
 });
+
+
+gulp.task('default', ['sass', 'build', 'watch']);

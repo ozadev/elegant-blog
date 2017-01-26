@@ -3,12 +3,12 @@
     "id": 0,
     "title": "Lorem ipsum dolor sit amet, his affert platonem intellegat at, blandit maluisset constituto his ne.",
     "date": "Oct 10, 2016",
-    "posterSrc": "./content/0/poster-mini.jpg"
+    "posterSrc": "assets/content/0/poster-mini.jpg"
   },
   {
     "id": 1,
     "title": "Lorem ipsum dolor sit amet, his affert platonem intellegat at, blandit maluisset constituto his ne.",
     "date": "Sep 21, 2016",
-    "posterSrc": "./content/1/poster-mini.jpg"
+    "posterSrc": "assets/content/1/poster-mini.jpg"
   }
 ]

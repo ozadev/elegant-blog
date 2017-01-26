@@ -9,7 +9,7 @@
     "date": "Oct 10, 2016",
     "author": "John Doe",
     "commentsNum": 10,
-    "posterSrc": "./content/0/poster.jpg"
+    "posterSrc": "/assets/content/0/poster.jpg"
   },
   {
     "id": 1,
@@ -21,6 +21,6 @@
     "date": "Sep 21, 2016",
     "author": "John Doe",
     "commentsNum": 3,
-    "posterSrc": "./content/1/poster.jpg"
+    "posterSrc": "/assets/content/1/poster.jpg"
   }
 ]

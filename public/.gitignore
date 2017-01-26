@@ -1,2 +1,4 @@
 .idea/
 node_modules/
+/app/build.js
+/app/build.min.js
