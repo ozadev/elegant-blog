@@ -8,6 +8,8 @@
         '$document',
         function ($rootScope, $window, $document) {
 
+            $rootScope.screenMobile = 768;
+
             $rootScope.screenType = ($window.innerWidth < 768) ? 'mobile' :
               ($window.innerWidth < 992) ? 'tablet' : 'desktop';
 
