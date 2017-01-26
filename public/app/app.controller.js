@@ -3,42 +3,33 @@
 
     angular.module('blogApp').controller("mainCtrl", [
         '$scope',
-        '$window',
-        '$http',
-        '$sce',
-        function ($scope, $window, $http, $sce) {
+        'getGlobalData',
+        function ($scope, getGlobalData) {
 
-            $scope.sce = $sce;
+            var vm = this;
 
-            $scope.deviceScreenType = ($window.innerWidth < 768) ? 'mobile' :
-                ($window.innerWidth < 992) ? 'tablet' : 'desktop';
-
-            $http.get('/assets/data/categories.json', { cache: true })
-                .then(function(resp) {
-                    $scope.categories = resp.data;
+            getGlobalData.getCategories()
+                .then(function(data) {
+                    vm.categories = data;
                 });
 
-            $http.get('/assets/data/tags.json', { cache: true })
-                .then(function(resp) {
-                    console.log(resp);
-                    $scope.tags = resp.data;
+            getGlobalData.getTags()
+                .then(function(data) {
+                    vm.tags = data;
                 });
 
-            $http.get('/assets/data/popularPosts.json', { cache: true })
-                .then(function(resp) {
-                    $scope.popularPostsList = resp.data;
+            getGlobalData.getPopularPosts()
+                .then(function(data) {
+                    vm.popularPostsList = data;
                 });
 
+
+            //
+            // Slideout menu
+            //
             var slideoutMenuWidth = 250;
 
-            // if ($scope.deviceScreenType === 'mobile') {
-            //     slideoutMenuWidth = $window.innerWidth - 60;
-            // }
-            // if ($scope.deviceScreenType === 'tablet') {
-            //     slideoutMenuWidth = 250;
-            // }
-
-            $scope.slideout = new Slideout({
+            vm.slideout = new Slideout({
                 'panel': document.getElementById('panel'),
                 'menu': document.getElementById('menu'),
                 'padding': slideoutMenuWidth,
@@ -46,34 +37,21 @@
                 'side': 'right'
             });
 
-            $scope.menuState = {opened: false};
+            vm.menuState = {opened: false};
 
-            $scope.slideout.on('beforeopen', function() {
+            vm.slideout.on('beforeopen', function() {
                 console.log('beforeopen');
-                if (!$scope.menuState.opened) {
-                    $scope.$apply($scope.menuState.opened = true);
+                if (!vm.menuState.opened) {
+                    $scope.$apply(vm.menuState.opened = true);
                 }
             });
 
-            // $scope.slideout.on('open', function() {
-            //     console.log('open');
-            //     // if (!$scope.menuState.opened) {
-            //     $scope.$apply($scope.menuState.opened = true);
-            //     // }
-            // });
-
-            $scope.slideout.on('beforeclose', function() {
+            vm.slideout.on('beforeclose', function() {
                 console.log('beforeclose');
-                if ($scope.menuState.opened) {
-                    $scope.$apply($scope.menuState.opened = false);
+                if (vm.menuState.opened) {
+                    $scope.$apply(vm.menuState.opened = false);
                 }
             });
-            // $scope.slideout.on('close', function() {
-            //     console.log('close');
-            //     // if ($scope.menuState.opened) {
-            //     $scope.$apply($scope.menuState.opened = false);
-            //     // }
-            // });
 
         }]);
 

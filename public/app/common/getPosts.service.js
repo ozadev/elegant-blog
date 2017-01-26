@@ -1,7 +1,6 @@
 (function () {
     'use strict';
 
-
     angular.module('blogApp').factory('getPosts', function($http) {
         var service = {
             getPostsAll: function() {

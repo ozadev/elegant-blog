@@ -2,35 +2,31 @@
     'use strict';
 
     angular.module('blogApp').controller("postsListCtrl", [
-        '$scope',
-        'postsList',
-        '$window',
-        '$http',
         '$sce',
-        function ($scope, postsList, $window, $http, $sce) {
+        'getGlobalData',
+        'postsList',
+        function ($sce, getGlobalData, postsList) {
 
-            $scope.sce = $sce;
+            var vm = this;
 
-            $scope.deviceScreenType = ($window.innerWidth < 768) ? 'mobile' :
-                ($window.innerWidth < 992) ? 'tablet' : 'desktop';
+            vm.sce = $sce;
 
-            $http.get('/assets/data/categories.json', { cache: true })
-                .then(function(resp) {
-                    $scope.categories = resp.data;
+            getGlobalData.getCategories()
+                .then(function(data) {
+                    vm.categories = data;
                 });
 
-            $http.get('/assets/data/tags.json', { cache: true })
-                .then(function(resp) {
-                    console.log(resp);
-                    $scope.tags = resp.data;
+            getGlobalData.getTags()
+                .then(function(data) {
+                    vm.tags = data;
                 });
 
-            $http.get('/assets/data/popularPosts.json', { cache: true })
-                .then(function(resp) {
-                    $scope.popularPostsList = resp.data;
+            getGlobalData.getPopularPosts()
+                .then(function(data) {
+                    vm.popularPostsList = data;
                 });
 
-            $scope.postsList = postsList;
+            vm.postsList = postsList;
 
         }
     ]);

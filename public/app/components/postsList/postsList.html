@@ -7,15 +7,15 @@
         <div class="col-xs-12 col-md-8">
             <div class="post-list">
                 <div class="post"
-                     data-ng-repeat="post in postsList">
+                     data-ng-repeat="post in vm.postsList">
                     <a href="#/post/{{post.id}}">
                         <div class="post-poster">
                             <img data-ng-src="{{post.posterSrc}}">
-                            <a class="post-category" href="#/category/{{post.category}}">{{categories[post.category]}}</a>
+                            <a class="post-category" href="#/category/{{post.category}}">{{vm.categories[post.category]}}</a>
                             <div class="post-tags-list">
                                 <a class="tag-item"
                                       href="#/tag/{{tagKey}}"
-                                      data-ng-repeat="tagKey in post.tags">{{tags[tagKey]}}</a>
+                                      data-ng-repeat="tagKey in post.tags">{{vm.tags[tagKey]}}</a>
                             </div>
                         </div>
                     </a>
@@ -49,7 +49,7 @@
                     </h3>
                     <nav class="categories-nav">
                         <ul>
-                            <li data-ng-repeat="(catKey, category) in categories">
+                            <li data-ng-repeat="(catKey, category) in vm.categories">
                                 <a class="link" href="#/category/{{catKey}}">{{category}}</a>
                             </li>
                         </ul>
@@ -62,7 +62,7 @@
                     <div>
                         <a class="tag-item"
                            href="#/tag/{{tagKey}}"
-                           data-ng-repeat="(tagKey, tag) in tags">{{tag}}</a>
+                           data-ng-repeat="(tagKey, tag) in vm.tags">{{tag}}</a>
                     </div>
                 </div>
                 <div class="sidebar-block">
@@ -72,7 +72,7 @@
                     <div class="popular-posts">
                         <a class="link"
                            href="#/post/{{post.id}}"
-                           data-ng-repeat="post in popularPostsList">
+                           data-ng-repeat="post in vm.popularPostsList">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-sm-3">

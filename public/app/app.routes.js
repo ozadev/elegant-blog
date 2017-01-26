@@ -14,13 +14,13 @@
                     url: '/',
                     templateUrl: 'app/components/postsList/postsList.html',
                     controller: 'postsListCtrl',
+                    controllerAs: 'vm',
                     resolve: {
                         postsList: [
                             'getPosts',
                             function(getPosts) {
                                 console.log('route /');
                                 return getPosts.getPostsAll();
-                                // console.log($route.current.params.id);
                             }
                         ]
                     }
@@ -30,12 +30,13 @@
                     url: '/category/:id',
                     templateUrl: 'app/components/postsList/postsList.html',
                     controller: 'postsListCtrl',
+                    controllerAs: 'vm',
                     resolve: {
                         postsList: [
                             '$stateParams',
                             'getPosts',
                             function($stateParams, getPosts) {
-                                console.log('route /category/id');
+                                console.log('route /category/' + $stateParams.id);
                                 return getPosts.getPostsByCategory($stateParams.id);
                             }
                         ]
@@ -46,13 +47,39 @@
                     url: '/tag/:id',
                     templateUrl: 'app/components/postsList/postsList.html',
                     controller: 'postsListCtrl',
+                    controllerAs: 'vm',
                     resolve: {
                         postsList: [
                             '$stateParams',
                             'getPosts',
-                            function($stateParams, getPosts) {
-                                console.log('route /tag/id');
-                                return getPosts.getPostsByTag($stateParams.id);
+                            'getGlobalData',
+                            function($stateParams, getPosts, getGlobalData) {
+                                // console.log('route /tag/' + $stateParams.id);
+                                // return getPosts.getPostsByTag($stateParams.id);
+                                var data = {};
+
+                                getPosts.getPostsByTag($stateParams.id)
+                                    .then(function(post) {
+                                        data.post = post;
+                                    });
+
+                                getGlobalData.getCategories()
+                                    .then(function(categories) {
+                                        data.categories = categories;
+                                    });
+
+                                getGlobalData.getTags()
+                                    .then(function(tags) {
+                                        data.tags = tags;
+                                    });
+
+                                getGlobalData.getPopularPosts()
+                                    .then(function(popularPostsList) {
+                                        data.popularPostsList = popularPostsList;
+                                    });
+
+                                return data;
+
                             }
                         ]
                     }
@@ -61,18 +88,43 @@
                     name: 'post',
                     url: '/post/:id',
                     templateUrl: 'app/components/post/post.html',
-                    controller: ['$scope', 'post', function($scope, post) {
-                        $scope.post = post;
-                    }],
+                    controller: 'postCtrl',
+                    controllerAs: 'vm',
                     resolve: {
-                    post: [
-                            '$stateParams',
-                            'getPosts',
-                            function($route, getPosts) {
-                                console.log('route /post/id');
-                                return getPosts.getPostById($stateParams.id);
-                            }
-                        ]
+                        dataResolve: [
+                                '$stateParams',
+                                'getPosts',
+                                'getGlobalData',
+                                function($stateParams, getPosts, getGlobalData) {
+                                    console.log('route /post/' + $stateParams.id);
+
+                                    var data = {};
+
+                                    getPosts.getPostById($stateParams.id)
+                                        .then(function(post) {
+                                            data.post = post;
+                                        });
+
+                                    getGlobalData.getCategories()
+                                        .then(function(categories) {
+                                            data.categories = categories;
+                                        });
+
+                                    getGlobalData.getTags()
+                                        .then(function(tags) {
+                                            data.tags = tags;
+                                        });
+
+                                    getGlobalData.getPopularPosts()
+                                        .then(function(popularPostsList) {
+                                            data.popularPostsList = popularPostsList;
+                                        });
+
+                                    console.log(data);
+
+                                    return data;
+                                }
+                            ]
                     }
                 },
                 {
