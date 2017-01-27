@@ -3,25 +3,14 @@
 
     angular.module('blogApp').controller("mainCtrl", [
         '$scope',
-        'getGlobalData',
-        function ($scope, getGlobalData) {
+        '$rootScope',
+        function ($scope, $rootScope) {
 
             var vm = this;
 
-            getGlobalData.getCategories()
-                .then(function(data) {
-                    vm.categories = data;
-                });
-
-            getGlobalData.getTags()
-                .then(function(data) {
-                    vm.tags = data;
-                });
-
-            getGlobalData.getPopularPosts()
-                .then(function(data) {
-                    vm.popularPostsList = data;
-                });
+            vm.categories = $rootScope.globalData.categories;
+            vm.tags = $rootScope.globalData.tags;
+            vm.popularPostsList = $rootScope.globalData.popularPostsList;
 
 
             //

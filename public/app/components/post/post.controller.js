@@ -3,17 +3,18 @@
 
     angular.module('blogApp').controller("postCtrl", [
         '$sce',
-        'dataResolve',
-        function ($sce, dataResolve) {
+        '$rootScope',
+        'postResolve',
+        function ($sce, $rootScope, postResolve) {
 
             var vm = this;
 
             vm.sce = $sce;
 
-            vm.post = dataResolve.post;
-            vm.categories = dataResolve.categories;
-            vm.tags = dataResolve.tags;
-            vm.popularPostsList = dataResolve.popularPostsList;
+            vm.post = postResolve;
+            vm.categories = $rootScope.globalData.categories;
+            vm.tags = $rootScope.globalData.tags;
+            vm.popularPostsList = $rootScope.globalData.popularPostsList;
         }
     ]);
 
