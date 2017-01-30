@@ -58,10 +58,18 @@
 
                 function loadGlobalData() {
 
-                    getGlobalData.getGlobalData()
-                        .then(function(dataArr) {
-                            console.log(dataArr);
-                        });
+                    // getGlobalData.getGlobalData()
+                    //     .then(function(data) {
+                    //         $rootScope.globalData = {
+                    //             categories: data.categories,
+                    //             tags: data.tags,
+                    //             popularPostsList: data.popularPostsList
+                    //         };
+                    //         console.log($rootScope.globalData);
+                    //     })
+                    //     .catch(function(err) {
+                    //         console.error(err);
+                    //     });
 
                     getGlobalData.getCategories()
                         .then(function(data) {

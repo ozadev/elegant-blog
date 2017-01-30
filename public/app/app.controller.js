@@ -12,6 +12,9 @@
             vm.tags = $rootScope.globalData.tags;
             vm.popularPostsList = $rootScope.globalData.popularPostsList;
 
+            console.log('data: ');
+            console.log(vm.categories);
+
 
             //
             // Slideout menu

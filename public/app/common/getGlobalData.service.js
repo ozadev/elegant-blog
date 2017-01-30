@@ -37,12 +37,19 @@
                     service.getCategories(),
                     service.getTags(),
                     service.getPopularPosts()
-                ]);
+                ]).then(function(dataArr) {
+                    return {
+                        categories: dataArr[0],
+                        tags: dataArr[1],
+                        popularPostsList: dataArr[2]
+                    }
+                });
             }
 
         };
 
         return service;
     }
+
 
 })();
