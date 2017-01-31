@@ -21,36 +21,30 @@
         ///////
 
         function getPostsAll() {
-            return $http.get('/assets/data/posts.json', { cache: true })
+            return $http.get('/api/posts', { cache: true })
                 .then(function(resp) {
                     return resp.data;
                 });
         }
 
         function getPostsByCategory(id) {
-            return service.getPostsAll()
-                .then(function (posts) {
-                    return posts.filter(function(item) {
-                        return item.category === id;
-                    })
+            return $http.get('/api/categories/' + id, { cache: true })
+                .then(function(resp) {
+                    return resp.data;
                 });
         }
 
         function getPostsByTag(id) {
-            return service.getPostsAll()
-                .then(function (posts) {
-                    return posts.filter(function(item) {
-                        return item.tags.indexOf(id) !== -1;
-                    })
+            return $http.get('/api/tags/' + id, { cache: true })
+                .then(function(resp) {
+                    return resp.data;
                 });
         }
 
         function getPostById(id) {
-            return service.getPostsAll()
-                .then(function (posts) {
-                    return posts.filter(function(item) {
-                        return item.id === +id;
-                    })[0];
+            return $http.get('/api/posts/' + id, { cache: true })
+                .then(function(resp) {
+                    return resp.data;
                 });
         }
 

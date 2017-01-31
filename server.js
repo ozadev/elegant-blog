@@ -5,6 +5,7 @@
 var http = require('http');
 var path = require('path');
 var express = require('express');
+var api = require('./api');
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.set('port', process.env.PORT || 3000);
 // app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'public')));
 
+
 // development only
 // if ('development' == app.get('env')) {
 //     app.use(express.errorHandler());
@@ -29,6 +31,12 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 // app.get('/', function (req, res) {
 //     res.sendFile(path.join(__dirname,'/public/index.html'));
 // });
+
+api.get('/post/:id', function (req, res) {
+    res.send('Admin Homepage');
+});
+
+app.use('/api', api);
 
 app.get('*', function (req, res) {
     res.writeHead(404, {'Content-Type':'text/plain'});

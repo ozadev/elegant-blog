@@ -5,14 +5,11 @@
         .module('blogApp')
         .factory('loadGlobalData', loadGlobalData);
 
-    loadGlobalData.$inject = ['$http', '$q'];
+    loadGlobalData.$inject = ['$http'];
 
-    function loadGlobalData($http, $q) {
+    function loadGlobalData($http) {
 
         var service = {
-            getCategories: getCategories,
-            getTags: getTags,
-            getPopularPosts: getPopularPosts,
             getGlobalData: getGlobalData
         };
 
@@ -20,33 +17,11 @@
 
         //////
 
-        function getCategories() {
-            return $http.get('/assets/data/categories.json', {cache: true})
-                .then(function (res) {
-                    return res.data;
-                })
-        }
-
-        function getTags() {
-            return $http.get('/assets/data/tags.json', {cache: true})
-                .then(function (res) {
-                    return res.data;
-                });
-        }
-
-        function getPopularPosts() {
-            return $http.get('/assets/data/popularPosts.json', {cache: true})
-                .then(function (res) {
-                    return res.data;
-                });
-        }
-
         function getGlobalData() {
-            return $q.all({
-                categories: service.getCategories(),
-                tags: service.getTags(),
-                popularPostsList: service.getPopularPosts()
-            });
+            return $http.get('/api/global-data', {cache: true})
+                .then(function (res) {
+                    return res.data;
+                });
         }
     }
 

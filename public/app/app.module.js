@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('blogApp', [
-        'ui.router'
+        'ui.router',
+        'ngResource'
     // 'ngCookies',
     // 'ngAnimate',
     ]);
