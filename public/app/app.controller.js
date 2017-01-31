@@ -1,50 +1,70 @@
 (function () {
     'use strict';
 
-    angular.module('blogApp').controller("mainCtrl", [
-        '$scope',
-        '$rootScope',
-        function ($scope, $rootScope) {
+    angular
+        .module('blogApp')
+        .controller("mainCtrl", mainCtrl);
 
-            var vm = this;
+    mainCtrl.$inject = ['$scope', 'loadGlobalData'];
 
-            vm.categories = $rootScope.globalData.categories;
-            vm.tags = $rootScope.globalData.tags;
-            vm.popularPostsList = $rootScope.globalData.popularPostsList;
+    function mainCtrl($scope, loadGlobalData) {
 
-            console.log('data: ');
-            console.log(vm.categories);
+        var vm = this;
 
+        vm.categories = {};
+        vm.tags = {};
+        vm.popularPostsList = [];
 
-            //
-            // Slideout menu
-            //
-            var slideoutMenuWidth = 250;
+        loadGlobalData.getGlobalData()
+            .then(getGlobalData)
+            .catch(getGlobalDataError);
 
-            vm.slideout = new Slideout({
-                'panel': document.getElementById('panel'),
-                'menu': document.getElementById('menu'),
-                'padding': slideoutMenuWidth,
-                'tolerance': 70,
-                'side': 'right'
-            });
+        //
+        // Slideout menu
+        //
+        var slideoutMenuWidth = 250;
 
-            vm.menuState = {opened: false};
+        vm.slideout = new Slideout({
+            'panel': document.getElementById('panel'),
+            'menu': document.getElementById('menu'),
+            'padding': slideoutMenuWidth,
+            'tolerance': 70,
+            'side': 'right'
+        });
 
-            vm.slideout.on('beforeopen', function() {
-                console.log('beforeopen');
-                if (!vm.menuState.opened) {
-                    $scope.$apply(vm.menuState.opened = true);
-                }
-            });
+        vm.menuState = {opened: false};
 
-            vm.slideout.on('beforeclose', function() {
-                console.log('beforeclose');
-                if (vm.menuState.opened) {
-                    $scope.$apply(vm.menuState.opened = false);
-                }
-            });
+        vm.slideout.on('beforeopen', function() {
+            console.log('beforeopen');
+            if (!vm.menuState.opened) {
+                $scope.$apply(vm.menuState.opened = true);
+            }
+        });
 
-        }]);
+        vm.slideout.on('beforeclose', function() {
+            console.log('beforeclose');
+            if (vm.menuState.opened) {
+                $scope.$apply(vm.menuState.opened = false);
+            }
+        });
+
+        //////
+
+        // getGlobalData() promise resolve function
+        function getGlobalData(data) {
+            vm.categories = data.categories;
+            vm.tags = data.tags;
+            vm.popularPostsList = data.popularPostsList;
+
+            return data;
+        }
+
+        // getGlobalData() promise reject function
+        function getGlobalDataError(err) {
+            console.error('Error with getGlobalData() promise at app.controller');
+            console.error(err);
+        }
+
+    }
 
 })();

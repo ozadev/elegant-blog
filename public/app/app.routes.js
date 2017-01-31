@@ -21,10 +21,10 @@
                         controllerAs: 'vm',
                         resolve: {
                             postsListResolve: [
-                                'getPosts',
-                                function(getPosts) {
+                                'loadPosts',
+                                function(loadPosts) {
                                     console.log('route /');
-                                    return getPosts.getPostsAll();
+                                    return loadPosts.getPostsAll();
                                 }
                             ]
                         }
@@ -38,10 +38,10 @@
                         resolve: {
                             postsListResolve: [
                                 '$stateParams',
-                                'getPosts',
-                                function($stateParams, getPosts) {
+                                'loadPosts',
+                                function($stateParams, loadPosts) {
                                     console.log('route /category/' + $stateParams.id);
-                                    return getPosts.getPostsByCategory($stateParams.id);
+                                    return loadPosts.getPostsByCategory($stateParams.id);
                                 }
                             ]
                         }
@@ -55,10 +55,10 @@
                         resolve: {
                             postsListResolve: [
                                 '$stateParams',
-                                'getPosts',
-                                function($stateParams, getPosts) {
+                                'loadPosts',
+                                function($stateParams, loadPosts) {
                                     console.log('route /tag/' + $stateParams.id);
-                                    return getPosts.getPostsByTag($stateParams.id);
+                                    return loadPosts.getPostsByTag($stateParams.id);
                                 }
                             ]
                         }
@@ -72,10 +72,10 @@
                         resolve: {
                             postResolve: [
                                 '$stateParams',
-                                'getPosts',
-                                function($stateParams, getPosts) {
+                                'loadPosts',
+                                function($stateParams, loadPosts) {
                                     console.log('route /post/' + $stateParams.id);
-                                    return getPosts.getPostById($stateParams.id);
+                                    return loadPosts.getPostById($stateParams.id);
                                 }
                             ]
                         }
