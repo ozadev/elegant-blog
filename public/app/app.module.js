@@ -3,7 +3,8 @@
 
     angular.module('blogApp', [
         'ui.router',
-        'ngResource'
+        'ngResource',
+        'textAngular'
     // 'ngCookies',
     // 'ngAnimate',
     ]);

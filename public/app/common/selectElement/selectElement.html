@@ -1,0 +1,15 @@
+<div class="select-element">
+  <div style="padding: 30px"><input type="text" ng-model="text"/></div>
+  <div class="selected-item">
+    <div text-angular ng-model="textModel"></div>
+    <!--<span class="switch-icon" data-ng-class="isOpened ? 'icon-arrow-up' : 'icon-arrow-down'"></span>-->
+    <span class="select-add-icon" data-ng-click="isOpened = !isOpened"></span>
+    <!--<span class="switch-icon icon-arrow-down animate-show" data-ng-hide="isOpened"></span>-->
+  </div>
+  <ul class="select-list animate-show"
+      data-ng-show="isOpened">
+    <li class="select-list-item"
+        data-ng-repeat="(key, val) in variables"
+        data-ng-click="select(key)"><span class="list-item-elem">{{val}}</span></li>
+  </ul>
+</div>
