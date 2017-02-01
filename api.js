@@ -16,15 +16,15 @@ var dbConnection = require('./js/dbConnection');
 api.get('/posts', function (req, res) {
 
     // Test
-    Promise.using(dbConnection(), function(connection) {
-        return connection.query('SELECT * FROM `items`')
-            .then(function(row) {
-                // console.log(row);
-                return row;
-            }).catch(function(error) {
-                console.log(error);
-            });
-    });
+    // Promise.using(dbConnection(), function(connection) {
+    //     return connection.query('SELECT * FROM `items`')
+    //         .then(function(row) {
+    //             // console.log(row);
+    //             return row;
+    //         }).catch(function(error) {
+    //             console.log(error);
+    //         });
+    // });
 
     fs.readFileAsync('./public/assets/data/posts.json', 'utf8')
         .then((data) => {

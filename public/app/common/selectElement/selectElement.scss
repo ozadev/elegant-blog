@@ -57,8 +57,9 @@
 
   .test-content {
     display: inline-block;
+    width: 200px;
     &:after {
-      content: attr(value) " ";;
+      content: attr(value);
       line-height: 1.4;
       vertical-align: middle;
       display: inline-block;
