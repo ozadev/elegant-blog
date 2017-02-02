@@ -1,0 +1,26 @@
+<div>
+  <div style="padding: 30px 0; font-size: 16px; color: #003856">{{resultText}}</div>
+  <div class="select-element">
+    <div class="selected-item">
+      <div text-angular
+           ng-click=""
+           id="editor1"
+           name="editor1"
+           ng-model="textView"></div>
+      <span class="label-add-container">
+        <span class="label-add-icon" ng-mouseover="saveCursor()" data-ng-click="isOpened = !isOpened"></span>
+      </span>
+      <div style="position: relative">
+        <ul class="select-list animate-show"
+            data-ng-show="isOpened">
+          <li class="select-list-item"
+              data-ng-repeat="(key, val) in variables"
+              data-ng-click="select(key)">
+            <img ng-src={{val.iconSrc}}>
+            <span class="item-title" data-key={{key}}>{{val.name}}</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

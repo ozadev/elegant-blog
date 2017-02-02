@@ -83,7 +83,9 @@
                     {
                         name: 'about',
                         url: '/about',
-                        templateUrl: 'app/components/about/about.html'
+                        templateUrl: 'app/components/about/about.html',
+                        controller: 'aboutCtrl',
+                        controllerAs: 'vm'
                     }
 
                 ];
