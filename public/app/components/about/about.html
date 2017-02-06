@@ -1,8 +1,48 @@
+<style>
+    .ly-main {
+        width: 800px;
+        border: 1px solid red;
+    }
+
+    /*.ly-main:after {*/
+        /*content: "";*/
+        /*display: table;*/
+        /*clear: both;*/
+    /*}*/
+
+    .ly2-main {
+        padding: 0;
+        margin: 0;
+        column-count: 4;
+        column-gap: 0;
+    }
+
+    .ly-elem {
+        /*margin: 10px;*/
+        border: 1px solid black;
+        height: 100px;
+        width: 200px;
+        /*float: left;*/
+        display: inline-block;
+        vertical-align: top;
+    }
+</style>
+
 <div style="height: 500px">
-    <h1 style="text-align: center">About me...</h1>
-    {{vm.test}}
-    <div style="width: 800px; padding: 30px 50px">
-        <input-labeled variables="vm.variables"
-                       text-model="vm.textModel"></input-labeled>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="ly-main ly2-main">
+                    <li class="ly-elem" style="width: 600px; height: 60px; background-color: #1B98E0"></li>
+                    <li class="ly-elem" style="height: 110px;"></li>
+                    <li class="ly-elem" style="height: 80px;"></li>
+                    <li class="ly-elem" style="height: 140px;"></li>
+                    <li class="ly-elem" style="height: 60px;"></li>
+                    <li class="ly-elem" style="height: 110px;"></li>
+                    <li class="ly-elem" style="height: 80px;"></li>
+                    <li class="ly-elem" style="height: 140px;"></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
