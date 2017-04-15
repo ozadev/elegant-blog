@@ -172,7 +172,7 @@
                     post: [
                             '$stateParams',
                             'getPosts',
-                            function($route, getPosts) {
+                            function($stateParams, getPosts) {
                                 console.log('route /post/id');
                                 return getPosts.getPostById($stateParams.id);
                             }
