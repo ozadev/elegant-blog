@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "load-front": "./public install"
+    "postinstall": "npm install --prefix ./public"
   },
   "repository": {
     "type": "git",
