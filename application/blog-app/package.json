@@ -1,25 +1,26 @@
 {
   "name": "elegant-blog-frontend",
   "version": "1.0.0",
-  "description": "Blog about electronics (frontend part)",
-  "main": "index.js",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-ui-router": "^1.0.3",
+    "bootstrap": "^3.3.7",
+    "node-sass": "^4.5.3",
+    "normalize.css": "^7.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "oza",
-  "license": "ISC",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-tinypng-compress": "^1.2.1",
-    "gulp-uglify": "^2.0.0"
-  },
-  "dependencies": {
-    "angular": "^1.5.8",
-    "angular-ui-router": "^0.4.2",
-    "bootstrap": "^3.3.7",
-    "normalize.css": "^5.0.0"
-  }
+  "license": "ISC"
 }
