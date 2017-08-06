@@ -12,7 +12,7 @@
                 {
                     name: 'index',
                     url: '/',
-                    templateUrl: 'app/components/postsList/postsList.html',
+                    templateUrl: 'application/components/postsList/postsList.html',
                     controller: 'postsListCtrl',
                     resolve: {
                         postsList: [
@@ -28,7 +28,7 @@
                 {
                     name: 'category',
                     url: '/category/:id',
-                    templateUrl: 'app/components/postsList/postsList.html',
+                    templateUrl: 'application/components/postsList/postsList.html',
                     controller: 'postsListCtrl',
                     resolve: {
                         postsList: [
@@ -44,7 +44,7 @@
                 {
                     name: 'tag',
                     url: '/tag/:id',
-                    templateUrl: 'app/components/postsList/postsList.html',
+                    templateUrl: 'application/components/postsList/postsList.html',
                     controller: 'postsListCtrl',
                     resolve: {
                         postsList: [
@@ -60,7 +60,7 @@
                 {
                     name: 'post',
                     url: '/post/:id',
-                    templateUrl: 'app/components/post/post.html',
+                    templateUrl: 'application/components/post/post.html',
                     controller: ['$scope', 'post', function($scope, post) {
                         $scope.post = post;
                     }],
@@ -78,7 +78,7 @@
                 {
                     name: 'about',
                     url: '/about',
-                    templateUrl: 'app/components/about/about.html'
+                    templateUrl: 'application/components/about/about.html'
                 }
 
             ];
